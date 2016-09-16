@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group_id: 
+  message: MyString
+  expDate: 2016-09-16
+
+two:
+  group_id: 
+  message: MyString
+  expDate: 2016-09-16
