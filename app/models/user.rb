@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base
-	has_namy :Contact
-	has_namy :Public_Message
+	has_many :Contact
+	has_many :Public_Message
 end

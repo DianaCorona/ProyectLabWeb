@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916204540) do
+ActiveRecord::Schema.define(version: 20160916224747) do
 
   create_table "calendars", force: :cascade do |t|
     t.integer  "user_id"
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20160916204540) do
     t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "userName"
   end
 
 end

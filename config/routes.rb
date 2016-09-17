@@ -39,32 +39,32 @@ Rails.application.routes.draw do
   delete 'notes/:id/borrar' => 'notes#delete', as: :delete_notes
 
 #CRUD CHAT PRIVADO
-  get 'privateMConversation' => 'privateMConversation#index', as: :see_privateMConversation
-  get 'privateConversation/new' => 'privateConversation#new', as: :new_privateConversation
-  post 'privateConversation/create' => 'privateConversation#create'
-  get 'privateConversation/:id' => 'privateConversation#show', as: :see_one_privateConversation
-  get 'privateConversation/:id/editar' => 'privateConversation#edit', as: :edit_privateConversation
-  post 'privateConversation/:id/update' => 'privateConversation#update', as: :update_privateConversation
-  delete 'privateConversation/:id/borrar' => 'privateConversation#delete', as: :delete_privateConversation
+  get 'private_Conversations' => 'private_conversation#index', as: :see_privateConversation
+  get 'private_Conversations/new' => 'private_conversation#new', as: :new_privateConversation
+  post 'private_Conversations/create' => 'private_conversation#create'
+  get 'private_Conversations/:id' => 'private_conversation#show', as: :see_one_privateConversation
+  get 'private_Conversations/:id/editar' => 'private_conversation#edit', as: :edit_privateConversation
+  post 'private_Conversations/:id/update' => 'private_conversation#update', as: :update_privateConversation
+  delete 'private_Conversations/:id/borrar' => 'private_conversation#delete', as: :delete_privateConversation
 
 #CR MENSAJES PRIVADO
-  get 'privateMessages' => 'privateMessages#index', as: :see_privateMessages
-  get 'privateMessage/new' => 'privateMessage#new', as: :new_privateMessage
-  post 'privateMessage/create' => 'privateMessage#create'
+  get 'private_Messages' => 'private_messages#index', as: :see_privateMessages
+  get 'private_Message/new' => 'private_message#new', as: :new_privateMessage
+  post 'private_Message/create' => 'private_message#create'
 
 #CR MENSAJES PUBLICO
-  get 'publicMessages' => 'publicMessages#index', as: :see_publicMessages
-  get 'publicMessage/new' => 'publicMessage#new', as: :new_publicMessage
-  post 'publicMessage/create' => 'publicMessage#create'
+  get 'public_Messages' => 'public_messages#index', as: :see_publicMessages
+  get 'public_Message/new' => 'public_message#new', as: :new_publicMessage
+  post 'public_Message/create' => 'public_message#create'
 
 #CRUD USUARIOS 
-  #get 'users' => 'users#index', as: :see_users
-  get 'users/new' => 'users#new', as: :new_user
-  post 'users/create' => 'users#create'
-  get 'users/:id' => 'users#show', as: :see_one_users
-  get 'users/:id/editar' => 'users#edit', as: :edit_users
-  post 'users/:id/update' => 'users#update', as: :update_users
-  delete 'users/:id/borrar' => 'users#delete', as: :delete_users
+  get 'users' => 'user#index', as: :see_users
+  get 'users/new' => 'user#new', as: :new_user
+  post 'users/create' => 'user#create'
+  get 'users/:id' => 'user#show', as: :see_one_users
+  get 'users/:id/editar' => 'user#edit', as: :edit_users
+  post 'users/:id/update' => 'user#update', as: :update_users
+  delete 'users/:id/borrar' => 'user#delete', as: :delete_users
 
 #CR MENSAJES
   get 'messages' => 'messages#index', as: :see_messages
