@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   delete 'events/:id/borrar' => 'events#delete', as: :delete_events
 
 #CRUD GRUPOS
+  get 'groups' => 'groups#index', as: :all_groups
   get 'groups/new' => 'groups#new', as: :new_groups
   post 'groups/create' => 'groups#create'
   get 'groups/:id' => 'groups#show', as: :see_one_ugroups
@@ -28,8 +29,9 @@ Rails.application.routes.draw do
   delete 'groups/:id/borrar' => 'groups#delete', as: :delete_groups
 
 #CRUD NOTAS
+  get 'notes' => 'notes#index', as: :all_notes
   get 'notes/new' => 'notes#new', as: :new_notes
-  post 'notes/create' => 'notes#create'
+  post 'notes/create' => 'notes#create', as: :create_notes
   get 'notes/:id' => 'notes#show', as: :see_one_notes
   delete 'notes/:id/borrar' => 'notes#delete', as: :delete_notes
 
