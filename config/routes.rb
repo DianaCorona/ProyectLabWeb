@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+#Login
+  root to: "home#index"
+  devise_for :user_2
 
 #CRUD COLECCIONES
   get 'collections/new' => 'collections#new', as: :new_collections
@@ -7,14 +10,6 @@ Rails.application.routes.draw do
   get 'collections/:id/editar' => 'collections#edit', as: :edit_collections
   post 'collections/:id/update' => 'collections#update', as: :update_collections
   delete 'collections/:id/borrar' => 'collections#delete', as: :delete_collections
-
-#CRUD CONTACTO 
-  get 'contacts/new' => 'contacts#new', as: :new_contacts
-  post 'contacts/create' => 'contacts#create'
-  get 'contacts/:id' => 'contacts#show', as: :see_one_contacts
-  get 'contacts/:id/editar' => 'contacts#edit', as: :edit_contacts
-  post 'contacts/:id/update' => 'contacts#update', as: :update_contacts
-  delete 'contacts/:id/borrar' => 'contacts#delete', as: :delete_contacts
 
 #CRUD EVENTOS
   get 'events/new' => 'events#new', as: :newevents
@@ -58,13 +53,15 @@ Rails.application.routes.draw do
   post 'public_Message/create' => 'public_message#create'
 
 #CRUD USUARIOS 
-  get 'users' => 'user#index', as: :see_users
-  get 'users/new' => 'user#new', as: :new_user
-  post 'users/create' => 'user#create'
-  get 'users/:id' => 'user#show', as: :see_one_users
-  get 'users/:id/editar' => 'user#edit', as: :edit_users
-  post 'users/:id/update' => 'user#update', as: :update_users
-  delete 'users/:id/borrar' => 'user#delete', as: :delete_users
+authenticate :user_2 do
+  get 'users' => 'users2#index', as: :see_users
+end
+  get 'users/new' => 'users2#new', as: :new_user
+  post 'users/create' => 'users2#create'
+  get 'users/:id' => 'users2#show', as: :see_one_users
+  get 'users/:id/editar' => 'users2#edit', as: :edit_users
+  post 'users/:id/update' => 'users2#update', as: :update_users
+  delete 'users/:id/borrar' => 'users2#delete', as: :delete_users
 
 #CR MENSAJES
   get 'messages' => 'messages#index', as: :see_messages

@@ -1,0 +1,16 @@
+<h1> Create your user </h1>
+
+ <%= form_tag("/users/create", method: :post) do%>
+     
+    <p>Username: <%= text_field_tag :nickname  %></p>
+    <p>Password: <%= text_field_tag :password  %></p>
+    <p>Name: <%= text_field_tag :name %></p>
+    <p>Last Name: <%= text_field_tag :lastName  %></p>
+    <p>Birthday: <%= date_field_tag :birthday  %></p>
+    <p>Phone: <%= text_field_tag :phone  %></p>
+    <p>E-mail: <%= text_field_tag :email  %></p>
+
+    <p><%= submit_tag 'Crear' %></p>
+<% end %>
+
+
