@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 #Login
   root to: "home#index"
-  devise_for :user_2
+  devise_for :user2, controllers: { sessions: 'sessions' }
 
 #CRUD COLECCIONES
   get 'collections/new' => 'collections#new', as: :new_collections
@@ -54,10 +54,9 @@ Rails.application.routes.draw do
   get 'public_Message/new' => 'public_message#new', as: :new_publicMessage
   post 'public_Message/create' => 'public_message#create'
 
-#CRUD USUARIOS 
-authenticate :user_2 do
+#CRUD USUARIOS
+
   get 'users' => 'users2#index', as: :see_users
-end
   get 'users/new' => 'users2#new', as: :new_user
   post 'users/create' => 'users2#create'
   get 'users/:id' => 'users2#show', as: :see_one_users

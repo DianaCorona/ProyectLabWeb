@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024233501) do
+ActiveRecord::Schema.define(version: 20161028035411) do
 
   create_table "calendars", force: :cascade do |t|
     t.integer  "user_id"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 20161024233501) do
     t.string   "phone"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "authentication_token"
   end
 
   add_index "user2s", ["email"], name: "index_user2s_on_email", unique: true
