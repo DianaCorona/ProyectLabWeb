@@ -1,6 +1,7 @@
 class User2 < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :group
   devise :database_authenticatable, :trackable, :validatable
 
   before_save :ensure_authentication_token
