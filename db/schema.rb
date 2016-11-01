@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028035411) do
+ActiveRecord::Schema.define(version: 20161028223329) do
 
   create_table "calendars", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,9 +68,11 @@ ActiveRecord::Schema.define(version: 20161028035411) do
     t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user2_id"
   end
 
   add_index "group_lists", ["group_id"], name: "index_group_lists_on_group_id"
+  add_index "group_lists", ["user2_id"], name: "index_group_lists_on_user2_id"
   add_index "group_lists", ["user_id"], name: "index_group_lists_on_user_id"
 
   create_table "groups", force: :cascade do |t|
