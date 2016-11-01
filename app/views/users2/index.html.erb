@@ -1,0 +1,7 @@
+<%= link_to 'Cerrar sesión', destroy_user_2_session_path, method: :delete %>
+<a href="<%= new_user_url%>"> Crear nuevo user </a>
+<ul>
+<% @user.each do |user| %>
+	<li><a href="<%= see_one_users_url(id: user.id) %>"> <%= user.email %> </a> 
+	<% end %>
+</ul>

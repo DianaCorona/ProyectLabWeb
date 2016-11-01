@@ -1,0 +1,20 @@
+<h1> Descripcion de user </h1>
+<ul>
+	<li> Id: <%= @user.id %></li>
+	<li> Username: <%= @user.nickname %></li>
+	<li> Name: <%= @user.name %></li>
+	<li> Last Name: <%= @user.lastName %></li>
+	<li> Birthday: <%= @user.birthday %></li>
+	<li> Email: <%= @user.email %></li
+</ul>
+
+<p><a href="<%= edit_users_url%>"> Editar </a></p>
+<p><a href="<%= see_users_url%>"> Regresar </a></p>
+
+<!--
+<%= form_tag delete_users_url(id: @user.id), method: :delete do%>
+	 <p><%= submit_tag 'Borrar' %></p>
+<% end %>
+-->
+
+ <%= link_to 'Borrar', delete_users_url(id: @user.id), method: :delete %>
