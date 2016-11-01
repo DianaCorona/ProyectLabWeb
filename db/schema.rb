@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028223329) do
+ActiveRecord::Schema.define(version: 20161101165235) do
 
   create_table "calendars", force: :cascade do |t|
     t.integer  "user_id"
@@ -153,12 +153,5 @@ ActiveRecord::Schema.define(version: 20161028223329) do
   add_index "user2s", ["email"], name: "index_user2s_on_email", unique: true
   add_index "user2s", ["nickname"], name: "index_user2s_on_nickname", unique: true
   add_index "user2s", ["reset_password_token"], name: "index_user2s_on_reset_password_token", unique: true
-
-  create_table "users", force: :cascade do |t|
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "userName"
-  end
 
 end

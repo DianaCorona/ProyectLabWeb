@@ -1,6 +1,6 @@
 class Users2Controller < ApplicationController
-	skip_before_filter :authenticate_user_from_token!
-	skip_before_filter :authenticate_user2!
+	skip_before_filter :authenticate_user_from_token!, only: [:create]
+	skip_before_filter :authenticate_user2!, only: [:create]
 	def index
 	@user= User2.all
   	 	respond_to do |f|
@@ -10,7 +10,8 @@ class Users2Controller < ApplicationController
 	end
 	def show
 	    u_id=params[:id]
-	    @user= User2.where(id: u_id).first
+	    render status: 404 and return if u_id != 'me'
+	    render json: {user: current_user2 }
 	end
 
 	def create
@@ -24,24 +25,23 @@ class Users2Controller < ApplicationController
     @user= User2.where(id: u_id).first
  	end
 
-	 def update
-	    u_id = params[:id]
-	    redirect_to edit_users_path(u_id) and return if !valid_params
-	    @user= User2.where(id: u_id).first
-	    @user.update_attributes(user_params)
-	    redirect_to action: :show
-	  end
+	def update
+		u_id = params[:id].to_i
+		render json: {error: 'Unauthorized'}, status: 403 and return if !valid_params || u_id != current_user2.id
+		user = User2.where(id: u_id).first
+		user.update_attributes(user_params)
+		render json: {user: current_user2 }
+	end
 
 	 def delete
 		#permisos <= devise
 		u_id=params[:id].to_i
 		@user= User2.where(id: u_id).first
 		if @user.nil?
-		  return redirect_to action: :index
+		  	return redirect_to action: :index
 		else
-		  @user.destroy
-	    redirect_to action: :index
-
+		  	@user.destroy
+	    	redirect_to action: :index
 		end
 	 end
 

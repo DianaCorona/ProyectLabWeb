@@ -61,7 +61,7 @@ Rails.application.routes.draw do
   post 'users/create' => 'users2#create'
   get 'users/:id' => 'users2#show', as: :see_one_users
   get 'users/:id/editar' => 'users2#edit', as: :edit_users
-  post 'users/:id/update' => 'users2#update', as: :update_users
+  put 'users/:id/update' => 'users2#update', as: :update_users
   delete 'users/:id/borrar' => 'users2#delete', as: :delete_users
 
 #CR MENSAJES
