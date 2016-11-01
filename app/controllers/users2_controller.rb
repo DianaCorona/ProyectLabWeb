@@ -1,6 +1,6 @@
 class Users2Controller < ApplicationController
-	skip_before_filter :authenticate_user_from_token!
-	skip_before_filter :authenticate_user2!
+	skip_before_filter :authenticate_user_from_token!, only: [:create] 
+	skip_before_filter :authenticate_user2!, only: [:create] 
 	def index
 	@user= User2.all
   	 	respond_to do |f|
@@ -10,7 +10,8 @@ class Users2Controller < ApplicationController
 	end
 	def show
 	    u_id=params[:id]
-	    @user= User2.where(id: u_id).first
+	    render status: 404 and return if u_id != 'me'
+	    render json: {user: current_user2 }
 	end
 
 	def create
