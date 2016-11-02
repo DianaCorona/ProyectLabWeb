@@ -1,10 +1,8 @@
 class GroupsController < ApplicationController
-<<<<<<< HEAD
-=======
+
   skip_before_filter :authenticate_user_from_token!, only: [:create]
 	skip_before_filter :authenticate_user2!, only: [:create]
 
->>>>>>> 67732c59f3e054c7eb337c5daf88ca6fb03d52ee
    def index
 	@group= Group.all
   	 	respond_to do |f|
