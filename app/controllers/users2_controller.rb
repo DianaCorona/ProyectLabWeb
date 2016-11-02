@@ -1,6 +1,6 @@
 class Users2Controller < ApplicationController
-	skip_before_filter :authenticate_user_from_token!, only: [:create] 
-	skip_before_filter :authenticate_user2!, only: [:create] 
+	skip_before_filter :authenticate_user_from_token!, only: [:create]
+	skip_before_filter :authenticate_user2!, only: [:create]
 	def index
 	@user= User2.all
   	 	respond_to do |f|

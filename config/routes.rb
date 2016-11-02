@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'groups/new'
+
 #Login
   root to: "home#index"
   devise_for :user2, controllers: { sessions: 'sessions' }
