@@ -1,16 +1,18 @@
+
 <h1> Edit a user </h1>
 
  <%= form_tag(update_users_url({id: @user.id}), method: :post) do%>
-    
-    <p>username:<%= text_field_tag :nickname, @user.nickname  %></p>    
+
+    <p>username:<%= text_field_tag :nickname, @user.nickname  %></p>
     <p>password:<%= text_field_tag(:password, @user.password) %></p>
     <p>name:<%= text_field_tag :name, @user.name  %></p>
     <p>last name:<%= text_field_tag :lastName, @user.lastName  %></p>
     <p>birthday:<%= date_field_tag :birthday, @user.birthday  %></p>
     <p>phone:<%= text_field_tag :phone , @user.phone %></p>
     <p>email:<%= text_field_tag :email, @user.email %></p>
- 
+
     <p><%= submit_tag 'Actualizar' %></p>
     <a href="<%= see_users_url%>"> Cancelar </a>
-    
+
+
 <% end %>

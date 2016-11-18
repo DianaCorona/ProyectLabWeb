@@ -1,6 +1,8 @@
+
 <a href="<%= new_user_url%>"> Crear nuevo user </a>
 <ul>
 <% @user.each do |user| %>
-	<li><a href="<%= see_one_users_url(id: user.id) %>"> <%= user.nickname %> </a> 
+	<li><a href="<%= see_one_users_url(id: user.id) %>"> <%= user.nickname %> </a>
 	<% end %>
+¡
 </ul>

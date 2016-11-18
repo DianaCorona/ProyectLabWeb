@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
 #Login
   root to: "home#index"
   devise_for :user2, controllers: { sessions: 'sessions' }
@@ -61,7 +62,13 @@ Rails.application.routes.draw do
   post 'users/create' => 'users2#create'
   get 'users/:id' => 'users2#show', as: :see_one_users
   get 'users/:id/editar' => 'users2#edit', as: :edit_users
+<<<<<<< HEAD
   put 'users/:id/update' => 'users2#update', as: :update_users
+=======
+
+  put 'users/:id/update' => 'users2#update', as: :update_users
+
+>>>>>>> e0960a485a99830cbacb226ac6c10ab4068dd301
   delete 'users/:id/borrar' => 'users2#delete', as: :delete_users
 
 #CR MENSAJES

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028035411) do
+ActiveRecord::Schema.define(version: 20161101165235) do
 
   create_table "calendars", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,9 +68,16 @@ ActiveRecord::Schema.define(version: 20161028035411) do
     t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user2_id"
   end
 
   add_index "group_lists", ["group_id"], name: "index_group_lists_on_group_id"
+  add_index "group_lists", ["user2_id"], name: "index_group_lists_on_user2_id"
+
+  end
+
+  add_index "group_lists", ["group_id"], name: "index_group_lists_on_group_id"
+
   add_index "group_lists", ["user_id"], name: "index_group_lists_on_user_id"
 
   create_table "groups", force: :cascade do |t|
@@ -151,12 +158,5 @@ ActiveRecord::Schema.define(version: 20161028035411) do
   add_index "user2s", ["email"], name: "index_user2s_on_email", unique: true
   add_index "user2s", ["nickname"], name: "index_user2s_on_nickname", unique: true
   add_index "user2s", ["reset_password_token"], name: "index_user2s_on_reset_password_token", unique: true
-
-  create_table "users", force: :cascade do |t|
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "userName"
-  end
 
 end
