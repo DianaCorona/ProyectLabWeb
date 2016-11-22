@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'groups/show'
+
 #Login
   root to: "home#index"
   devise_for :user2, controllers: { sessions: 'sessions' }
@@ -28,6 +30,10 @@ Rails.application.routes.draw do
   get 'groups/:id/editar' => 'groups#edit', as: :edit_groups
   post 'groups/:id/update' => 'groups#update', as: :update_groups
   delete 'groups/:id/borrar' => 'groups#delete', as: :delete_groups
+
+  #CRUD GRUPOS-LISTA
+
+  get 'group_list/:id' => 'group_list#show'
 
 #CRUD NOTAS
   get 'notes' => 'notes#index', as: :all_notes

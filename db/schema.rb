@@ -73,11 +73,6 @@ ActiveRecord::Schema.define(version: 20161101165235) do
 
   add_index "group_lists", ["group_id"], name: "index_group_lists_on_group_id"
   add_index "group_lists", ["user2_id"], name: "index_group_lists_on_user2_id"
-
-  end
-
-  add_index "group_lists", ["group_id"], name: "index_group_lists_on_group_id"
-
   add_index "group_lists", ["user_id"], name: "index_group_lists_on_user_id"
 
   create_table "groups", force: :cascade do |t|

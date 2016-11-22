@@ -1,9 +1,15 @@
 class GroupListController < ApplicationController
 
   def index
-    user=current_user2
-    @grupos=Group_list.where({id: received_id}).all
-    render json: {group: @grupos}
+
   end
 
+
+  def show
+    g_id=params[:id]
+
+    render json: {listg:  Group.where("id" => g_id).first}
+
+
+  end
 end
