@@ -1,12 +1,9 @@
 class Users2Controller < ApplicationController
-	skip_before_filter :authenticate_user_from_token!, only: [:create] 
-	skip_before_filter :authenticate_user2!, only: [:create] 
+	skip_before_filter :authenticate_user_from_token!, only: [:create]
+	skip_before_filter :authenticate_user2!, only: [:create]
 	def index
 	@user= User2.all
-  	 	respond_to do |f|
-		  	f.json{}
-		    f.html{}
- 		end
+  	 render json: {user: @user }
 	end
 	def show
 	    u_id=params[:id]
@@ -25,8 +22,8 @@ class Users2Controller < ApplicationController
     @user= User2.where(id: u_id).first
  	end
 
-	def update	
-	 	u_id = params[:id] 	
+	def update
+	 	u_id = params[:id]
 	    render status: 403 and return if !valid_params
 	    current_user2.update_attributes(user_params)
 	    render json: {user: current_user2 }
