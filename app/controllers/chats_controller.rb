@@ -5,4 +5,7 @@ class ChatsController < ApplicationController
   rescue ActiveRecord::RecordNotFound => e
     return render json: {errors: ['Not found']}, status: 404
   end
+
+  def create 
+  end
 end
