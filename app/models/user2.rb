@@ -3,6 +3,7 @@ class User2 < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :trackable
   has_many :group
+  has_many :chat
 
   before_save :ensure_authentication_token
 
