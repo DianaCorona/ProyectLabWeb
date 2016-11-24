@@ -32,7 +32,7 @@ class NotesController < ApplicationController
 	 	if @note_params.present?
 	 		@note_params
 	 	else
-	 		@note_params = params.require(:note).permit(:group_id, :message, :expDate)
+	 		@note_params = params.require(:note).permit(:group_id, :message, :expDate, :title)
 		end	 	
 	 end
 
