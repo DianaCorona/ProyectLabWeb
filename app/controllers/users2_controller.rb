@@ -31,7 +31,7 @@ class Users2Controller < ApplicationController
 
 	 def delete
 		#permisos <= devise
-		u_id=params[:id].to_i
+		u_id = params[:id].to_i
 	  	current_user2.destroy
 		render json: {user: current_user2 }
 	 end
