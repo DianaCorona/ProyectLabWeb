@@ -6,7 +6,8 @@ class NotesController < ApplicationController
 #  delete 'notes/:id/borrar' => 'notes#delete', as: :delete_notes
     def index
 		@notes= Note.all
-  	 	render json: {note: @notes}
+		#notes = Note.includes(:group).all
+  	 	return render json: {notes: @notes}
 	end
 	def show
     	n_id=params[:id]
@@ -15,15 +16,15 @@ class NotesController < ApplicationController
     	@notes= Note.where(id: n_id).first
 	end
 	def create
-        n= Note.new(note_params)
-		n.save
+        notes= Note.new(note_params)
+		notes.save
 		render json: {note: notes}
 	end
 
 	 def delete
 		#permisos <= devise
 		n_id=params[:id].to_i
-		@notes= Note.where(id: g_id).first
+		@notes= Note.where(id: n_id).first
 		@notes.destroy
 		render json: {note: notes}
 	 end
