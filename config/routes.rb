@@ -35,7 +35,8 @@ Rails.application.routes.draw do
   #CRUD GRUPOS-LISTA
 
   get 'group_list/:id' => 'group_list#show'
-
+  post 'group_list/' =>'group_list#create'
+  put 'group_list/:id' => 'group_list#update'
 #CRUD NOTAS
   get 'notes' => 'notes#index', as: :all_notes
   get 'notes/new' => 'notes#new', as: :new_notes

@@ -15,17 +15,17 @@ class GroupsController < ApplicationController
 	def show
     g_id=params[:id]
     user2= User2.where(id: current_user2).first
+    #gr=GroupList.where(user2_id: user2.id)
+    gr=GroupList.where(user2_id: user2.id ).to_a
+    k=Array.new
+    a=0
+    gr.size.times do |i|
+      if !Group.where(id: gr[i].group_id).where.not(name: nil).blank?
+        k+=Group.where(id: gr[i].group_id).where.not(name: nil)
+      end
+    end
+    render json: {listg: k}
 
-    #groups= Group.where({'code'=> user2.email})
-    #render json: {listg:  Group.where("code" => "pats@gmail.com")}
-    render json: {listg:  Group.where("code" => user2.email)}
-    # @groups=Group.findby code: user2.email
-    # render json: {listg: @groups }
-  #   Groups.find_each(code: current_user2) do |user|
-  #
-  #
-  # render json: {listg: user }
-  #   end
 
 	end
 	def create
@@ -34,7 +34,7 @@ class GroupsController < ApplicationController
 		g= Group.new({
 
 			name: params['group'][:name],
-			expDate: params['group'][:exp_date],
+			exp_date: params['group'][:exp_date],
       code: params['group'][:id_user],
       created_at: nil,
       updated_at: nil
@@ -47,6 +47,10 @@ class GroupsController < ApplicationController
 
       })
       gl.save
+      chat=Chat.new({
+        group_id: gl.group_id
+        })
+        chat.save
 
   redirect_to action: :new
 	end
