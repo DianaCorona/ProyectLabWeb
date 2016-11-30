@@ -16,8 +16,21 @@ class NotesController < ApplicationController
     	@notes= Note.where(id: n_id).first
 	end
 	def create
+<<<<<<< HEAD
         notes= Note.new(note_params)
 		notes.save
+=======
+        @notes= Note.new(note_params)
+		@notes.save
+		render json: {note: notes}
+	end
+
+	def update
+		n_id=params[:id]
+		@notes= Note.where(id: n_id).first
+		render status: 403
+		notes.update_attributes(user_params)
+>>>>>>> 0743452be1e4d8279e8091992a20e377a0c20709
 		render json: {note: notes}
 	end
 
@@ -33,7 +46,7 @@ class NotesController < ApplicationController
 	 	if @note_params.present?
 	 		@note_params
 	 	else
-	 		@note_params = params.require(:note).permit(:group_id, :message, :expDate, :title)
+	 		@note_params = params.require(:note).permit(:group_id, :title, :message, :expDate )
 		end	 	
 	 end
 
