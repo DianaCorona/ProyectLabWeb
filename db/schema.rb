@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161125010256) do
-=======
-ActiveRecord::Schema.define(version: 20161124004212) do
->>>>>>> eea9ba19aca82c6dc570ec62c1b347d8ed1a4328
 
   create_table "calendars", force: :cascade do |t|
     t.integer  "user_id"
@@ -51,6 +47,18 @@ ActiveRecord::Schema.define(version: 20161124004212) do
   end
 
   add_index "collections", ["group_id"], name: "index_collections_on_group_id"
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "lastName"
+    t.date     "birthday"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id"
 
   create_table "events", force: :cascade do |t|
     t.integer  "calendar_id"
@@ -106,6 +114,42 @@ ActiveRecord::Schema.define(version: 20161124004212) do
   end
 
   add_index "notes", ["group_id"], name: "index_notes_on_group_id"
+
+  create_table "private_conversations", force: :cascade do |t|
+    t.datetime "date"
+    t.integer  "contact_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "private_conversations", ["contact_id"], name: "index_private_conversations_on_contact_id"
+  add_index "private_conversations", ["user_id"], name: "index_private_conversations_on_user_id"
+
+  create_table "private_messages", force: :cascade do |t|
+    t.integer  "privateConversation_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "private_messages", ["privateConversation_id"], name: "index_private_messages_on_privateConversation_id"
+
+  create_table "public_messages", force: :cascade do |t|
+    t.integer  "chat_id"
+    t.integer  "user_id"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "public_messages", ["chat_id"], name: "index_public_messages_on_chat_id"
+  add_index "public_messages", ["user_id"], name: "index_public_messages_on_user_id"
+
+  create_table "telephones", force: :cascade do |t|
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "user2s", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
