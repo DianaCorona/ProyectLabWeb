@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124004212) do
+ActiveRecord::Schema.define(version: 20161125010256) do
 
   create_table "calendars", force: :cascade do |t|
     t.integer  "user_id"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20161124004212) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
-    t.date     "expDate"
+    t.date     "exp_date"
     t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
