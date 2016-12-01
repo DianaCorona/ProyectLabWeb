@@ -1,12 +1,13 @@
 class ChatsController < ApplicationController
   def index
-  	@chat = Chat.all
-  	render	json:{ chat: chat}
+  	@chat = Chat.where(group_id: current_user2.group_lists.map(&:group_id).uniq )
+  	render	json:{ chat: @chat}
+    #return render :json => @chat.to_json(:include => :message )
   end
   def show
-    @chat = Chat.find(params[:id])
-    return render json: {chat: @chat}
-  	rescue ActiveRecord::RecordNotFound => e
+    @chat = Chat.includes(:messages).find(params[:id])
+    return render :json => @chat.to_json(:include => :messages, root: true )
+    rescue ActiveRecord::RecordNotFound => e
     return render json: {errors: ['Not found']}, status: 404
   end
 
@@ -19,8 +20,8 @@ class ChatsController < ApplicationController
   def delete 
   	c_id = params[:id].to_i
   	@chat = Chat.where(id: c_id).first	
-	@chat.destroy	
-	render json: {chat: notes}
+  	@chat.destroy	
+  	render json: {chat: notes}
   end
 
   def chat_params

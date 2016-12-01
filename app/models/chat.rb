@@ -1,5 +1,5 @@
 class Chat < ActiveRecord::Base
   belongs_to :group
   has_many :public_message
-  has_many :message
+  has_many :messages
 end

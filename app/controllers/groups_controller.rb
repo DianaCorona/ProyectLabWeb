@@ -34,7 +34,7 @@ class GroupsController < ApplicationController
 		g= Group.new({
 
 			name: params['group'][:name],
-			exp_date: params['group'][:exp_date],
+			expDate: params['group'][:exp_date],
       code: params['group'][:id_user],
       created_at: nil,
       updated_at: nil

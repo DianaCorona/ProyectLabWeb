@@ -46,5 +46,6 @@ group :development do
 end
 
 gem 'devise'
+gem 'passenger'
 
 gem 'rack-cors', require: 'rack/cors'
