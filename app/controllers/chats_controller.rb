@@ -11,16 +11,16 @@ class ChatsController < ApplicationController
     return render json: {errors: ['Not found']}, status: 404
   end
 
-  def create 
+  def create
   	c = Chat.new(chat_params)
   	c.save
   	render json: {chat: c}
   end
 
-  def delete 
+  def delete
   	c_id = params[:id].to_i
-  	@chat = Chat.where(id: c_id).first	
-  	@chat.destroy	
+  	@chat = Chat.where(id: c_id).first
+  	@chat.destroy
   	render json: {chat: notes}
   end
 

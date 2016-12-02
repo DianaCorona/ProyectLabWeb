@@ -29,12 +29,9 @@ class GroupsController < ApplicationController
 
 	end
 	def create
-
-
 		g= Group.new({
-
 			name: params['group'][:name],
-			expDate: params['group'][:exp_date],
+			exp_date: params['group'][:exp_date],
       code: params['group'][:id_user],
       created_at: nil,
       updated_at: nil
@@ -42,7 +39,7 @@ class GroupsController < ApplicationController
 		g.save
     @Id_user= User2.where(email: g.code).first
     gl= GroupList.new({
-        user2_id: @Id_user.id,
+        user2_id: current_user2.id,
         group_id: g.id
 
       })
@@ -65,7 +62,7 @@ class GroupsController < ApplicationController
 	    @group= Group.where(id: u_id).first
 	    @group.update_attributes({
 	      	name: params[:name],
-			expDate: params[:expDate],
+			exp_date: params[:exp_date],
             code: params[:code],
             created_at: params[:created_at],
             updated_at: params[:updated_at]
