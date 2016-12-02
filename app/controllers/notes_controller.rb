@@ -5,9 +5,13 @@ class NotesController < ApplicationController
 #  get 'notes/:id' => 'notes#show', as: :see_one_notes
 #  delete 'notes/:id/borrar' => 'notes#delete', as: :delete_notes
     def index
-		@notes= Note.all
-		#notes = Note.includes(:group).all
-  	 	return render json: {notes: @notes}
+    	u_id=User2.where(id: current_user2).first
+		#@notes= Note.where(group_id: g_id).all
+		#@notes= Note.includes(:group => :user2).where(:group_id => u_id).all
+		#notes = Note.includes.all
+		#@grupos_usuario = GroupList.includes(:group=>:note).where(:user2_id => u_id).all
+		@notas = Note.joins("inner join group_lists on group_lists.group_id = notes.group_id").where(:group_lists => {:user2_id => u_id }).all
+  	 	return render json: {notes: @notas}
 	end
 	def show
     	n_id=params[:id]
@@ -15,23 +19,18 @@ class NotesController < ApplicationController
     	render json: {note: Note.where("id" => n_id)}
     	@notes= Note.where(id: n_id).first
 	end
+	
 	def create
-<<<<<<< HEAD
-        notes= Note.new(note_params)
-		notes.save
-=======
         @notes= Note.new(note_params)
 		@notes.save
-		render json: {note: notes}
+		render json: {note: @note}
 	end
 
 	def update
 		n_id=params[:id]
 		@notes= Note.where(id: n_id).first
-		render status: 403
-		notes.update_attributes(user_params)
->>>>>>> 0743452be1e4d8279e8091992a20e377a0c20709
-		render json: {note: notes}
+		@notes.update_attributes(note_params)
+		render json: {note: @notes}
 	end
 
 	 def delete
@@ -39,7 +38,7 @@ class NotesController < ApplicationController
 		n_id=params[:id].to_i
 		@notes= Note.where(id: n_id).first
 		@notes.destroy
-		render json: {note: notes}
+		render json: {note: @notes}
 	 end
 
 	 def note_params

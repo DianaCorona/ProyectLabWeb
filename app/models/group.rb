@@ -1,7 +1,7 @@
 class Group < ActiveRecord::Base
-	has_many :event
-	has_many :collection
-	has_many :note
+	has_many :events
+	has_many :collections
+	has_many :notes
 	has_many :user2
 	has_one :chat
 end

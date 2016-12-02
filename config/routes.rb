@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get 'notes/new' => 'notes#new', as: :new_notes
   post 'notes/create' => 'notes#create', as: :create_notes
   get 'notes/:id' => 'notes#show', as: :see_one_notes
+  put 'notes/:id/update' => 'notes#update', as: :update_notes
   delete 'notes/:id/borrar' => 'notes#delete', as: :delete_notes
 
 #CRUD CHAT PRIVADO
