@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
 		g.save
     @Id_user= User2.where(email: g.code).first
     gl= GroupList.new({
-        user2_id: current_user2.id,
+        user2_id: @Id_user.id,
         group_id: g.id
 
       })
@@ -75,10 +75,12 @@ class GroupsController < ApplicationController
 		#permisos <= devise
 		g_id=params[:id].to_i
 		@group= Group.where(id: g_id).first
+    @chat=Chat.where(group_id: @group.id).first
 		if @group.nil?
 		  return redirect_to action: :index
 		else
 		  @group.destroy
+      @chat.destroy
 	    redirect_to action: :index
 
 		end
