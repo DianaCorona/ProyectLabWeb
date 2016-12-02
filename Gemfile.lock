@@ -88,6 +88,9 @@ GEM
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
+    passenger (5.0.30)
+      rack
+      rake (>= 0.8.1)
     pkg-config (1.1.7)
     rack (1.6.4)
     rack-cors (0.4.0)
@@ -172,6 +175,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  passenger
   rack-cors
   rails (= 4.2.5)
   sass-rails (~> 5.0)

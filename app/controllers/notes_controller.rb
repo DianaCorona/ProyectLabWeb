@@ -9,9 +9,14 @@ class NotesController < ApplicationController
 		#@notes= Note.where(group_id: g_id).all
 		#@notes= Note.includes(:group => :user2).where(:group_id => u_id).all
 		#notes = Note.includes.all
+<<<<<<< HEAD
 		#@grupos_usuario = GroupList.includes(:group=>:note).where(:user2_id => u_id).all
 		@notas = Note.joins("inner join group_lists on group_lists.group_id = notes.group_id").where(:group_lists => {:user2_id => u_id }).all
   	 	return render json: {notes: @notas}
+=======
+		@grupos_usuario = GroupList.includes(:group=>:note).where(:user2_id => u_id).all
+  	 	return render json: {notes: @grupos_usuario}
+>>>>>>> 1a8745d519b824ffb14435826d3c1042080cf13f
 	end
 	def show
     	n_id=params[:id]
@@ -29,7 +34,12 @@ class NotesController < ApplicationController
 	def update
 		n_id=params[:id]
 		@notes= Note.where(id: n_id).first
+<<<<<<< HEAD
 		@notes.update_attributes(note_params)
+=======
+		render status: 403
+		@notes.update_attributes(user_params)
+>>>>>>> 1a8745d519b824ffb14435826d3c1042080cf13f
 		render json: {note: @notes}
 	end
 

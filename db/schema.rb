@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125010256) do
+ActiveRecord::Schema.define(version: 20161129154446) do
 
   create_table "calendars", force: :cascade do |t|
     t.integer  "user_id"
@@ -94,15 +94,14 @@ ActiveRecord::Schema.define(version: 20161125010256) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "chat_member_id"
     t.integer  "chat_id"
     t.text     "text"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user2_id"
   end
 
   add_index "messages", ["chat_id"], name: "index_messages_on_chat_id"
-  add_index "messages", ["chat_member_id"], name: "index_messages_on_chat_member_id"
 
   create_table "notes", force: :cascade do |t|
     t.integer  "group_id"
